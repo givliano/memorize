@@ -23,7 +23,11 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var isFaceUp = false
+    // Views are immutable, you can't change the variables in them even
+    // if they are not constant.
+    //  @State creates a pointer in memory to store isFaceUp
+    // `Temporary state`
+    @State var isFaceUp = false
 
     var body: some View {
         let base = RoundedRectangle(cornerRadius: 12)
@@ -38,7 +42,8 @@ struct CardView: View {
             }
         }
         .onTapGesture {
-            print("hi")
+            // Structs have funtions in them, e.g. Bool has `toggle`
+            isFaceUp.toggle()
         }
     }
 }
